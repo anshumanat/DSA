@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+int palindrome(vector<int> A)
+{
+	// Write your code here.
+	long long n = A.size();
+	vector<int>a(n);
+	for(int i=0;i<n;i++){
+		a[i] =A[i];
+	}
+	long long i=0;
+	long long j=n-1;
+	long long cnt = 0;
+
+	while(i<j){
+		if(a[i]==a[j]){
+			i++;
+			j--;
+		}else if(a[i] <a[j]){
+            a[i+1] += a[i];
+			i++;
+			cnt++;
+		} 
+       
+	}
+	return cnt;
+}
