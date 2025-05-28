@@ -1,0 +1,39 @@
+class Solution {
+  public:
+    int kthSmallest(vector<vector<int>> &matrix, int k) {
+        // code here
+        int n = matrix.size();
+        
+        vector<int>arr;
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                arr.push_back(matrix[i][j]);
+            }
+        }
+        sort(arr.begin(),arr.end());
+        return arr[k-1];
+    }
+};
+
+
+//2nd approach
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+        int n = matrix.size();
+        priority_queue<int>maxHeap;
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                int curr = matrix[i][j];
+                maxHeap.push(curr);
+
+                if(maxHeap.size()>k){
+                    maxHeap.pop();
+                }
+            }
+        }
+        return maxHeap.top();
+    }
+};
