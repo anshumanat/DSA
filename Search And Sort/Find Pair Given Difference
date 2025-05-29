@@ -1,0 +1,22 @@
+
+
+//approach using set
+class Solution {
+  public:
+    bool findPair(vector<int> &arr, int x) {
+        // code here
+        int n = arr.size();
+        unordered_set<int>st;
+        
+        //complement check
+        for(int num : arr){
+            if(st.count(num+x) || st.count(num-x)){
+            return true;
+        }
+        st.insert(num);
+        }
+         
+         
+        return false;
+    }
+};
