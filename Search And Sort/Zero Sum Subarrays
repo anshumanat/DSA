@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    int findSubarray(vector<int> &arr) {
+        // code here.
+        unordered_map<int,int>prefixCount;
+         
+        int sum=0,count=0;
+        prefixCount[0] = 1; //to count subarrays that start from index 0  and have sum=0
+        
+        for(int num : arr){
+            sum += num; //update the running sum (prefix sum)
+            count += prefixCount[sum]; //if this sum has been seen, add its count to ans
+            prefixCount[sum]++; //record the curr sum
+        }
+        return count;
+        
+    }
+};
