@@ -1,0 +1,66 @@
+class Solution {
+  public:
+    int countSetBits(int x){
+        int count = 0;
+        while(x){
+            x &=(x-1);
+            count++;
+        }
+        return count;
+    }
+    void sortBySetBitCount(int arr[], int n) {
+        // Your code goes here
+        stable_sort(arr,arr+n,[this](int a, int b){
+        return countSetBits(a) >countSetBits(b);
+    });
+  }
+};
+
+
+
+
+
+
+
+
+
+class Solution {
+  public:
+    int countOnes(int x){
+        int count = 0;
+        while(x){
+            count +=(x %2);
+            x /=2;
+        }
+        return count;
+    }
+    void sortBySetBitCount(int arr[], int n) {
+        // Your code goes here
+        stable_sort(arr,arr+n,[this](int a, int b){
+            int ca = countOnes(a);
+            int cb = countOnes(b);
+        return ca==cb ? false: ca>cb;
+    });
+  }
+};
+
+
+
+
+
+
+class Solution {
+  public:
+    static bool cmp(int a,int b){
+        int cnt1 = __builtin_popcount(a);
+        int cnt2 = __builtin_popcount(b);
+        // if(cnt1==cnt2){
+        //     return a<b;
+        // }
+        return cnt1>cnt2;
+    }
+    void sortBySetBitCount(int arr[], int n) {
+        // Your code goes here
+         stable_sort(arr,arr+n,cmp);
+    }
+};
